@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="BlocTime">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Bloc Base Project</title>
+    <title>Bloc Time</title>
     <link rel="stylesheet" href="/styles/style.css">
 </head>
-<body>
-    <script src="/scripts/app.js"></script>
-</body>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+    var config = {
+    apiKey: "AIzaSyD2DFZOqfPY9scFLPFJh2IH37veD1vuTz0",
+    authDomain: "bloc-time-1ebcf.firebaseapp.com",
+    databaseURL: "https://bloc-time-1ebcf.firebaseio.com",
+    storageBucket: "bloc-time-1ebcf.appspot.com",
+    messagingSenderId: "1012665061361"
+    };
+  firebase.initializeApp(config);
+  </script>
+
+  <script src="/scripts/app.js"></script>
+
+  </body>
 </html>
