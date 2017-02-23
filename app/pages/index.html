@@ -4,7 +4,32 @@
     <meta charset="UTF-8">
     <title>Bloc Time</title>
     <link rel="stylesheet" href="/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<body class="main">
+
+  <div class="container">
+    <h1 class="header">Bloctime</h1>
+  </div>
+  <!-- Timer -->
+  <div class="container">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="text-center">
+        <div ng-controller="newSessionCtrl">
+          <div id="timer-control">
+             <p class="timer" ng-model="format">Time Remaining: {{ time | secondsToMinutes | date: 'mm:ss' }} </p>
+             <button class="btn btn-start" type="button" data-ng-click = "startTimer()"> Start </button>
+             <button class="btn btn-reset" type="button" data-ng-click = "resetTimer()"> Reset </button>
+           </div>
+         </div>
+       </div>
+     </div>
+  </div>
+
+
+
+
 
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>

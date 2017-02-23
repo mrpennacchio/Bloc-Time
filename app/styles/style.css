@@ -1,0 +1,19 @@
+.main {
+  background-color: white;
+}
+
+.header{
+  font-family: "Roboto Condensed";
+  border-bottom: 1px solid #ff5252;
+}
+
+#timer-control {
+  margin-top: 20%;
+  font-family: "Roboto Condensed";
+  font-size: 24px;
+}
+
+.btn{
+  background-color: #ff5252;
+  color: white;
+}
