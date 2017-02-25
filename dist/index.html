@@ -16,11 +16,13 @@
   <div class="container">
     <div class="col-md-6 col-md-offset-3">
       <div class="text-center">
-        <div ng-controller="newSessionCtrl">
+        <div ng-controller="sessionCtrl">
           <div id="timer-control">
-             <p class="timer" ng-model="format">Time Remaining: {{ time | secondsToMinutes | date: 'mm:ss' }} </p>
-             <button class="btn btn-start" type="button" data-ng-click = "startTimer()"> Start </button>
-             <button class="btn btn-reset" type="button" data-ng-click = "resetTimer()"> Reset </button>
+             <p  class="timer">Time Remaining: {{ time | secondsToMinutes | date: 'mm:ss' }} </p>
+             <button ng-hide="onBreak" class="btn btn-start" type="button" ng-click = "startTimer()"> {{ message }} </button>
+             <button  ng-hide="!onBreak" class="btn btn-start" type="button" ng-click = "startBreakTimer()"> {{ breakMessage }} </button>
+             <button  ng-hide="onBreak" class="btn btn-reset" type="button" ng-click = "resetTimer()"> {{ resetMessage }} </button>
+             <button  ng-hide="!onBreak" class="btn btn-reset" type="button" ng-click = "resetBreakTimer()"> {{ resetMessage }} </button>
            </div>
          </div>
        </div>
@@ -49,6 +51,10 @@
   </script>
 
   <script src="/scripts/app.js"></script>
+  <script src="/scripts/controllers/sessionCtrl.js"></script>
+  <script src="/scripts/filters/secondsToMinutes.js"></script>
+  <script src="/scripts/constants/constants.js"></script>
+
 
   </body>
 </html>
