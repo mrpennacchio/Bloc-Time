@@ -8,7 +8,7 @@ angular.module('BlocTime')
       $scope.message = "Start"
       $scope.resetMessage = "Reset"
       $scope.breakMessage = "Start Break"
-
+      var sessionCount = 0;
 
       $scope.startTimer = function(){
         // don't execute function if it is already running
@@ -31,6 +31,13 @@ angular.module('BlocTime')
             alert("Time for a break");
             $scope.onBreak = true;
             $scope.timerRunning = false;
+            sessionCount += 1;
+	          console.log(sessionCount);
+            if (sessionCount % 4 == 0){
+              $scope.time = TIMER.LONG_BREAK;
+              sessionCount = 0;
+              alert("Time for a long break");
+            };
           };
         },1000);
       };
@@ -49,6 +56,8 @@ angular.module('BlocTime')
           $scope.timerRunning = true;
           $scope.onBreak = true;
           $scope.breakMessage = "Its Break Time"
+          console.log(sessionCount);
+
 
           if ($scope.time === 0){ //stop timer when it reaches 0
             $scope.stopBreakTimer();
