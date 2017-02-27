@@ -43,6 +43,14 @@ angular.module('BlocTime')
            // alert("Time for a break");
             $scope.onBreak = true;
             $scope.timerRunning = false;
+
+            sessionCount += 1;
+	          console.log(sessionCount);
+            if (sessionCount % 4 == 0){
+              $scope.time = TIMER.LONG_BREAK;
+              sessionCount = 0;
+              alert("Time for a long break");
+            };
           };
         },1000);
       };
