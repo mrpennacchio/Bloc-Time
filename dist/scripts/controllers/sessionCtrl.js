@@ -8,17 +8,11 @@ angular.module('BlocTime')
       $scope.message = "Start"
       $scope.resetMessage = "Reset"
       $scope.breakMessage = "Start Break"
+      var sessionCount = 0;
 
       var mySound = new buzz.sound("/assets/ding.mp3", {
 	       preload: true
       });
-
-    //  $scope.$watch('sound', function(){
-	  //     if ($scope.time === 0){
-	  //        mySound();
-	  //       }
-    //  });
-
 
 
       $scope.startTimer = function(){

@@ -2,13 +2,17 @@
   background-color: white;
 }
 
+html,body {
+  height: 100%;
+}
+
 .header{
   font-family: "Roboto Condensed";
   border-bottom: 1px solid #ff5252;
 }
 
 #timer-control {
-  margin-top: 20%;
+  margin-top: 10%;
   font-family: "Roboto Condensed";
   font-size: 24px;
 }
@@ -17,3 +21,46 @@
   background-color: #ff5252;
   color: white;
 }
+
+.task-bar {
+  border-right: 1px solid #ff5252;
+  min-height: 100%;
+}
+
+.task-list {
+  list-style: none;
+  padding-left: 0px;
+  text-align: left;
+}
+
+.single-task-items {
+  font-family: "Roboto Condensed";
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+  width: 100%;
+  color: #2c3e50;
+  border-bottom: 0.5px solid #ecf0f1;
+  padding-top: 0px;
+  margin-left: 5px;
+}
+
+.remove-icon {
+  float: right;
+  margin-right: 5px;
+  color: #2c3e50;
+}
+
+.task-input {
+  padding: 5px;
+  width: 80%;
+  margin-right: -2px;
+  margin-top:-5px;
+  height: 33px;
+}
+
+.task-header {
+  font-family: "Roboto Condensed";
+}
+
+

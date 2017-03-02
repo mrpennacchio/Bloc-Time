@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body class="main">
 
@@ -14,20 +15,41 @@
   </div>
   <!-- Timer -->
   <div class="container">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="text-center">
-        <div ng-controller="sessionCtrl">
-          <div id="timer-control">
-             <p  class="timer">Time Remaining: {{ time | secondsToMinutes | date: 'mm:ss' }} </p>
-             <button ng-hide="onBreak" class="btn btn-start" type="button" ng-click = "startTimer()"> {{ message }} </button>
-             <button  ng-hide="!onBreak" class="btn btn-start" type="button" ng-click = "startBreakTimer()"> {{ breakMessage }} </button>
-             <button  ng-hide="onBreak" class="btn btn-reset" type="button" ng-click = "resetTimer()"> {{ resetMessage }} </button>
-             <button  ng-hide="!onBreak" class="btn btn-reset" type="button" ng-click = "resetBreakTimer()"> {{ resetMessage }} </button>
+
+    <div class="row">
+      <div class="col-md-4 task-bar text-center">
+        <div class="text-center">
+           <h1 class="task-header">Completed Tasks</h1>
+           <div ng-controller="tasksCtrl">
+             <form class="task-form" name="form" ng-submit="addTask(form)">
+               <input class="task-input" ng-model="newTaskText" placeholder="Enter Completed Task"/>
+               <button class="input-button btn" type="submit">Add</button>
+            </form>
+             <div ng-repeat="task in tasks">
+               <ul class="task-list">
+		       <li class="single-task-items">{{ task.text }}<a href=""><span class="remove-icon ion-ios-trash-outline" ng-click="removeTask(task)"></span></a></li>
+               </ul>
+             </div>
+           </div>
+         </div>
+        </div>
+
+      <div class="col-md-8 timer-column">
+        <div class="text-center">
+          <div ng-controller="sessionCtrl">
+            <div id="timer-control">
+               <p  class="timer">Time Remaining: {{ time | secondsToMinutes | date: 'mm:ss' }} </p>
+               <button ng-hide="onBreak" class="btn btn-start" type="button" ng-click = "startTimer()"> {{ message }} </button>
+               <button  ng-hide="!onBreak" class="btn btn-start" type="button" ng-click = "startBreakTimer()"> {{ breakMessage }} </button>
+               <button  ng-hide="onBreak" class="btn btn-reset" type="button" ng-click = "resetTimer()"> {{ resetMessage }} </button>
+               <button  ng-hide="!onBreak" class="btn btn-reset" type="button" ng-click = "resetBreakTimer()"> {{ resetMessage }} </button>
+             </div>
            </div>
          </div>
        </div>
      </div>
-  </div>
+   </div>
+
 
 
 
@@ -38,23 +60,28 @@
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
     <script>
-    var config = {
-    apiKey: "AIzaSyD2DFZOqfPY9scFLPFJh2IH37veD1vuTz0",
-    authDomain: "bloc-time-1ebcf.firebaseapp.com",
-    databaseURL: "https://bloc-time-1ebcf.firebaseio.com",
-    storageBucket: "bloc-time-1ebcf.appspot.com",
-    messagingSenderId: "1012665061361"
-    };
-  firebase.initializeApp(config);
-  </script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyD2DFZOqfPY9scFLPFJh2IH37veD1vuTz0",
+        authDomain: "bloc-time-1ebcf.firebaseapp.com",
+        databaseURL: "https://bloc-time-1ebcf.firebaseio.com",
+        storageBucket: "bloc-time-1ebcf.appspot.com",
+        messagingSenderId: "1012665061361"
+      };
+      firebase.initializeApp(config);
+    </script>
 
   <script src="/scripts/app.js"></script>
-  <script src="/scripts/app.js"></script>
+  <script src="/scripts/controllers/tasksCtrl.js"></script>
   <script src="/scripts/controllers/sessionCtrl.js"></script>
   <script src="/scripts/filters/secondsToMinutes.js"></script>
   <script src="/scripts/constants/constants.js"></script>
+  <script src="/scripts/factories/tasks.js"></script>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.0/buzz.min.js"></script>
 
