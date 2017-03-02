@@ -5,13 +5,13 @@ angular.module('BlocTime', ["firebase"])
     $scope.tasks = $firebaseArray(ref);
     $scope.addTask = function(form){
       $scope.tasks.$add({
-	       text: $scope.newTaskText
+	       text: $scope.newTaskText,
+         date: firebase.database.ServerValue.TIMESTAMP 
       });
       $scope.newTaskText = '';
     };
 
     $scope.removeTask = function(task){
-     
 	    $scope.tasks.$remove(task);
     };
 }]);

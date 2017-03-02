@@ -7,7 +7,6 @@
 
     return {
       all: tasks
-      // remaining logic for tasks
     };
   }
 
