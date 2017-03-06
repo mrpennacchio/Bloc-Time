@@ -1,0 +1,16 @@
+<div class="col-md-4 task-bar text-center">
+  <div class="text-center">
+     <h1 class="task-header">Completed Tasks</h1>
+     <div ng-controller="tasksCtrl">
+       <form class="task-form" name="form" ng-submit="addTask(form)">
+         <input class="task-input" ng-model="newTaskText" placeholder="Enter Completed Task"/>
+         <button class="input-button btn" type="submit">Add</button>
+       </form>
+       <div ng-repeat="task in tasks | orderBy: 'date':true">
+         <ul class="task-list">
+            <li class="single-task-items">{{ task.text }}<a href=""><span class="remove-icon ion-ios-trash-outline"  ng-click="removeTask(task)"></span></a></li>
+         </ul>
+       </div>
+     </div>
+   </div>
+  </div>

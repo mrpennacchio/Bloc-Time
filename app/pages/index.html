@@ -15,38 +15,10 @@
   </div>
   <!-- Timer -->
   <div class="container">
-
     <div class="row">
-      <div class="col-md-4 task-bar text-center">
-        <div class="text-center">
-           <h1 class="task-header">Completed Tasks</h1>
-           <div ng-controller="tasksCtrl">
-             <form class="task-form" name="form" ng-submit="addTask(form)">
-               <input class="task-input" ng-model="newTaskText" placeholder="Enter Completed Task"/>
-               <button class="input-button btn" type="submit">Add</button>
-            </form>
-             <div ng-repeat="task in tasks | orderBy: 'date':true">
-               <ul class="task-list">
-		              <li class="single-task-items">{{ task.text }}<a href=""><span class="remove-icon ion-ios-trash-outline"  ng-click="removeTask(task)"></span></a></li>
-               </ul>
-             </div>
-           </div>
-         </div>
-        </div>
+      <ng-include src="'/templates/task.html'"></ng-include>
+      <ng-include src="'/templates/session.html'"></ng-include>
 
-      <div class="col-md-8 timer-column">
-        <div class="text-center">
-          <div ng-controller="sessionCtrl">
-            <div id="timer-control">
-               <p  class="timer">Time Remaining: {{ time | secondsToMinutes | date: 'mm:ss' }} </p>
-               <button ng-hide="onBreak" class="btn btn-start" type="button" ng-click = "startTimer()"> {{ message }} </button>
-               <button  ng-hide="!onBreak" class="btn btn-start" type="button" ng-click = "startBreakTimer()"> {{ breakMessage }} </button>
-               <button  ng-hide="onBreak" class="btn btn-reset" type="button" ng-click = "resetTimer()"> {{ resetMessage }} </button>
-               <button  ng-hide="!onBreak" class="btn btn-reset" type="button" ng-click = "resetBreakTimer()"> {{ resetMessage }} </button>
-             </div>
-           </div>
-         </div>
-       </div>
      </div>
    </div>
 
@@ -59,9 +31,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
     <!-- Firebase -->
-
-
     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
     <script>
       // Initialize Firebase

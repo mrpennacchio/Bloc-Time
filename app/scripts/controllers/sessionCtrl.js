@@ -2,7 +2,7 @@ angular.module('BlocTime')
     .controller('sessionCtrl', ['$scope', '$interval', 'TIMER', function($scope, $interval, TIMER){
 
       $scope.onBreak = false; //
-      $scope.time = 1500; // default time onload
+      $scope.time = 150; // default time onload
       // var breakTime = 300;
       // var workTime = 150;
       $scope.message = "Start"

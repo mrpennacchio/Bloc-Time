@@ -1,0 +1,13 @@
+<div class="col-md-8 timer-column">
+  <div class="text-center">
+    <div ng-controller="sessionCtrl">
+      <div id="timer-control">
+         <p class="timer">Time Remaining: {{ time | secondsToMinutes | date: 'mm:ss' }} </p>
+         <button ng-hide="onBreak" class="btn btn-start" type="button" ng-click = "startTimer()"> {{ message }} </button>
+         <button  ng-hide="!onBreak" class="btn btn-start" type="button" ng-click = "startBreakTimer()"> {{ breakMessage }} </button>
+         <button  ng-hide="onBreak" class="btn btn-reset" type="button" ng-click = "resetTimer()"> {{ resetMessage }} </button>
+         <button  ng-hide="!onBreak" class="btn btn-reset" type="button" ng-click = "resetBreakTimer()"> {{ resetMessage }} </button>
+       </div>
+     </div>
+   </div>
+ </div>
