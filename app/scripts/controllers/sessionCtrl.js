@@ -1,20 +1,18 @@
 angular.module('BlocTime')
     .controller('sessionCtrl', ['$scope', '$interval', 'TIMER', function($scope, $interval, TIMER){
 
-      $scope.onBreak = false; //
-      $scope.time = 150; // default time onload
-      // var breakTime = 300;
-      // var workTime = 150;
+      $scope.onBreak = false; // default is not on break
+      $scope.time = 1500; // default time onload
       $scope.message = "Start"
       $scope.resetMessage = "Reset"
       $scope.breakMessage = "Start Break"
-      var sessionCount = 0;
+      var sessionCount = 0; // count to check for long break
 
       var mySound = new buzz.sound("/assets/ding.mp3", {
 	       preload: true
       });
 
-
+      // start timer function
       $scope.startTimer = function(){
         // don't execute function if it is already running
         // prevents timer speed from multiplying on multiple clicks
@@ -39,8 +37,7 @@ angular.module('BlocTime')
             $scope.timerRunning = false;
 
             sessionCount += 1;
-	          console.log(sessionCount);
-            if (sessionCount % 4 == 0){
+            if (sessionCount % 4 == 0){ // start long break
               $scope.time = TIMER.LONG_BREAK;
               sessionCount = 0;
               alert("Time for a long break");
@@ -80,7 +77,6 @@ angular.module('BlocTime')
       $scope.stopTimer = function () {
         //Cancel the Timer.
         if (angular.isDefined($scope.countDown)) {
-          console.log("stopping work session")
           $interval.cancel($scope.countDown);
         }
       };
@@ -88,7 +84,6 @@ angular.module('BlocTime')
       // stop break
       $scope.stopBreakTimer = function() {
         if(angular.isDefined($scope.countDownBreak)) {
-          console.log("stopping break")
           $interval.cancel($scope.countDownBreak);
         }
       };
@@ -99,7 +94,7 @@ angular.module('BlocTime')
              $scope.time = TIMER.WORK_TIME;
            }
         };
-
+        // reset break timer
         $scope.resetBreakTimer = function(){
           if (angular.isDefined($scope.countDownBreak)) {
              $scope.time = TIMER.BREAK_TIME;

@@ -10,16 +10,4 @@ app.config(function($stateProvider, $locationProvider){
         requireBase: false
       });
 
-      // $stateProvider
-      //   .state('index', {
-      //     url: '/',
-      //     templateUrl: "/templates/session.html",
-      //     controller: "sessionCtrl"
-      //   })
-      //
-      //     // .state('task', {
-      //     //   url: '/tasks',
-      //     //   templateUrl: "/templates/task.html",
-      //     //   controller: "taskCtrl as task"
-      //     // });
 });
